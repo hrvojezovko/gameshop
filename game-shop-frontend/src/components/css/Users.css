@@ -35,7 +35,7 @@ thead td, tbody td {
 thead {
     color: #fff;
     background-color: #3367D6;
-    font-weight: 500;
+    font-weight: 0;
 }
 
 tbody tr:nth-child(even) {
