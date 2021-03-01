@@ -1,0 +1,44 @@
+table {
+    width: 100%;
+    margin-top: 30px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+table .action {
+    width: 60px;
+}
+
+table .emaill {
+    width: 30%;
+}
+
+
+tbody .left {
+    padding-left: 20px;
+    text-align: left;
+}
+
+tbody i {
+    color: #000;
+}
+
+tbody i:hover {
+    color: red;
+    cursor: pointer;
+}
+
+thead td, tbody td {
+    height: 40px;
+}
+
+thead {
+    color: #fff;
+    background-color: #3367D6;
+    font-weight: 500;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ddd;
+}
+

@@ -164,7 +164,7 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-nav li:not(:nth-child(7)) {
+nav li:not(:nth-child(7), :last-child) {
     padding: 0 15px;
 }
 
@@ -224,17 +224,32 @@ nav a {
     color: #fff;
 }
 
-.nav-right input, .theme-i input {
+.search-part input {
     position: fixed;
     /*top: 75px;*/
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     height: 100%;
-    background: #eee;
+    background-color: #eee;
     z-index: -20;
     opacity: 0.95;
-    transition: 0.2s linear;
+    transition: 0.5s linear;
+    border: none;
+    justify-content: left;
+}
+
+.theme-search-part input {
+    position: fixed;
+    /*top: 75px;*/
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    z-index: -20;
+    opacity: 0.95;
+    transition: 0.5s linear;
     border: none;
     justify-content: left;
 }
@@ -251,7 +266,7 @@ input {
     cursor: pointer;
 }
 
-.nav-right .toggle-search {
+.search-part .toggle-search, .theme-search-part .toggle-search {
     position: fixed;
     top: 108px;
     left: 50%;
@@ -265,7 +280,7 @@ input {
     align-items: center;
 }
 
-.nav-right .toggle-search input{
+.search-part .toggle-search input {
     position: absolute;
     top: 0;
     left: 0;
@@ -273,17 +288,33 @@ input {
     width: 100%;
     height: 100%;
     background-color: #eee;
-    transition: 5s ease;
+    transition: 0.5s ease;
     z-index: 1;
     outline: none;
     opacity: 1;
+    color: #000;
 }
 
-.search-right {
+.theme-search-part .toggle-search input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0,0);
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    transition: 0.5s ease;
+    z-index: 1;
+    outline: none;
+    opacity: 1;
+    color: #fff;
+}
+
+.search-part .search-right, .theme-search-part .search-right {
     display: flex;
 }
 
-.ikss {
+.search-part .ikss {
     width: fit-content;
     height: fit-content;
     z-index: 1;
@@ -292,7 +323,16 @@ input {
     align-items: center;
 }
 
-.search-enter {
+.theme-search-part .ikss {
+    width: fit-content;
+    height: fit-content;
+    z-index: 1;
+    height: 100%;
+    background-color: #111;
+    align-items: center;
+}
+
+.search-part .search-enter {
     width: fit-content;
     height: fit-content;
     z-index: 1;
@@ -301,34 +341,64 @@ input {
     align-items: center;
 }
 
-.ikss .fa-times {
+.theme-search-part .search-enter {
+    width: fit-content;
+    height: fit-content;
+    z-index: 1;
+    height: 100%;
+    background-color: #444;
+    align-items: center;
+}
+
+.search-part .ikss .fa-times {
     color: #888;
     padding: 10px;
 }
 
-.search-enter {
+.theme-search-part .ikss .fa-times {
+    color: #777;
+    padding: 10px;
+}
+
+.search-part .search-enter, .theme-search-part .search-enter  {
     /*padding: 0;*/
     height: 100%;
     overflow: hidden;
 }
 
-.search-enter .fa-search {
+.search-part .search-enter .fa-search {
     color: #888;
     padding: 10px 25px;
 }
 
-.ikss .fa-times:hover {
+.theme-search-part .search-enter .fa-search {
+    color: #777;
+    padding: 10px 25px;
+}
+
+.search-part .ikss .fa-times:hover {
     cursor: pointer;
     color: #000;
 }
 
-.search-enter .fa-search:hover {
+.theme-search-part .ikss .fa-times:hover {
+    cursor: pointer;
+    color: #fff;
+}
+
+.search-part .search-enter .fa-search:hover {
     cursor: pointer;
     color: #000;
     transform: scale(1.2);
 }
 
-.nav-right .toggle-search-false {
+.theme-search-part .search-enter .fa-search:hover {
+    cursor: pointer;
+    color: #fff;
+    transform: scale(1.2);
+}
+
+.search-part .toggle-search-false, .theme-search-part .toggle-search-false {
     position: fixed;
     top: 108px;
     left: 50%;
@@ -339,18 +409,10 @@ input {
     overflow: hidden;
 }
 
-.toggle-search-false .ikss,
-.toggle-search-false .search-enter {
+.search-part .toggle-search-false .ikss, .theme-search-part .toggle-search-false .ikss,
+.search-part .toggle-search-false .search-enter, .theme-search-part .toggle-search-false .search-enter {
     display: none;
 }
-
-/* .ggg {
-    background-color: lawngreen;
-    position: fixed;
-    top: -50%;
-    transition: 2s ease;
-} */
-
 
 
 
@@ -402,7 +464,7 @@ input {
 
 header .menu, header .theme-menu,
 header .adjust,
-header .close, header .close-log,
+header .close,
 .nav-right :nth-child(4), .theme-i :nth-child(4),
 .tgs,
 .fa-desktop, .fa-playstation, .fa-xbox, .fa-percent, .fa-tag, .fa-hotjar,
@@ -443,11 +505,27 @@ header .close-log, header .toggle-login-false,
         width: 700px;
         font-size: 10px;
     }
+
+    .search-part .toggle-search, .theme-search-part .toggle-search {
+        top: 98px;
+    }
+
+    .search-part .toggle-search-false, .theme-search-part .toggle-search-false {
+        top: 98px;
+    }
 }
 
 @media(max-width: 840px) {
     header {
         height: 120px;
+    }
+
+    .search-part .toggle-search, .theme-search-part .toggle-search {
+        top: 118px;
+    }
+
+    .search-part .toggle-search-false, .theme-search-part .toggle-search-false {
+        top: 118px;
     }
 }
 
@@ -521,7 +599,6 @@ header .close-log, header .toggle-login-false,
         display: block;
         width: 100%;
         /*padding-top: 15px;*/
-        color: red;
     }
 
     header nav ul a:hover {
@@ -536,6 +613,10 @@ header .close-log, header .toggle-login-false,
 
     header nav li, .theme nav li {
         padding: 0;
+    }
+
+    .fa-adjust {
+        margin-left: 5px;
     }
 
     .fa-desktop, .fa-playstation {
@@ -600,16 +681,27 @@ header .close-log, header .toggle-login-false,
 
     .nav-right, .theme-i {
         margin-right: 10px;
-        width: 50px;
+        width: 55px;
+        justify-content: space-between;
     }
 
-    .nav-right .user-mobile {
-        margin-left: 5px;
+    .nav-right .user-mobile, .theme-i .user-mobile {
+        width: 25px;
     }
 
-    .nav-right :nth-child(2), .theme-i :nth-child(2),
-    .nav-right :nth-child(3), .theme-i :nth-child(3) {
+    .nav-right .fa-heart, .theme-i .fa-heart,
+    .nav-right .fa-shopping-cart, .theme-i .fa-shopping-cart {
         display: none;
+    }
+
+    .search-part .toggle-search, .theme-search-part .toggle-search {
+        width: 100%;
+        top: 38px;
+    }
+
+    .search-part .toggle-search-false, .theme-search-part .toggle-search-false {
+        width: 100%;
+        top: 38px;
     }
 
     header .toggle {
@@ -647,7 +739,7 @@ header .close-log, header .toggle-login-false,
 
     header .menu, header .theme-menu,
     header .adjust,
-    header .close, header .close-log,
+    header .close,
     .tgs,
     .nav-right :nth-child(4), .theme-i :nth-child(4),
     header .close-log, header .toggle-login-false,

@@ -17,8 +17,6 @@ class Header extends Component{
     toggleSearch: false,
     iconSearch: false,
     gameNames: [
-      'STAR WARS BATTLEFRONT 2 (2017) (PC)',
-      'MINECRAFT: WINDOWS 10 EDITION (PC)',
     ],
     searchTerm: '',
     cartClass: "",
@@ -54,7 +52,7 @@ class Header extends Component{
     const {cart, theme, changeTheme, headerMargin, changeHeaderMargin} = this.context;
 
     return(
-      <header className={theme ? "theme" : ""} className={headerMargin ? "header-margin" : "header-margin-false"}>
+      <header className={"" + (theme ? "theme " : "") + (headerMargin ? "header-margin " : "header-margin-false ")}>
         <div className={theme ? "theme-menu" : "menu"} >
           <i className="fas fa-bars fa-lg" onClick={this.menuToggle}></i>
           <i className="fas fa-adjust fa-lg" onClick={() => changeTheme()}></i>
@@ -98,7 +96,7 @@ class Header extends Component{
           <div className={theme ? "theme-i" : "nav-right"}>
 
 
-            <div>
+            <div className={theme ? "theme-search-part" : "search-part"}>
               <div onClick={() => changeHeaderMargin()}>
                 <i onClick={this.menuIconSearch}>
                   {iconSearch ? "" : <i className="fas fa-search fa-lg" title="Search" onClick={this.menuToggleSearch}></i>}
